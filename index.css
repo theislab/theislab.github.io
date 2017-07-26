@@ -1,0 +1,12 @@
+.inline {
+	height: 1em;
+	vertical-align: middle;
+}
+
+.error {
+	color: red;
+}
+
+.chip {
+	vertical-align: middle;
+}
