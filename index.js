@@ -5,6 +5,17 @@ const domain2icon = {
 
 const get_domain = url => url.match(/https?:\/\/(?:www\.)?([^\/]+)/)[1]
 
+const sorter = (...keys) => (a, b) => {
+	for (const key of keys) {
+		const x = typeof a[key] === 'string' ? a[key].toLowerCase() : a[key]
+		const y = typeof b[key] === 'string' ? b[key].toLowerCase() : b[key]
+		// if (x === y) console.log(`${key} is equal: ${x} === ${y}!`)
+		// else console.log(`${key} is not equal: ${x} !== ${y}!`)
+		if (x === y) continue
+		return x < y ? -1 : 1
+	}
+}
+
 const urlify = text =>
 	text.replace(/(https?:\/\/[^\s]+)/g, '<a href="$1">$1</a>')
 
@@ -55,7 +66,12 @@ const render_error = e => `
 const repos_url = 'https://api.github.com/orgs/theislab/repos'
 const render_project_list = () => fetch(repos_url)
 	.then(r => r.json())
-	.then(repos => repos.map(render_repo).join('\n'))
+	.then(repos => repos
+		.sort(sorter('stargazers_count', 'name'))
+		.reverse()
+		.map(render_repo)
+		.join('\n')
+	)
 	.then(wrap_repos)
 
 document.addEventListener('DOMContentLoaded', () => {
