@@ -10,3 +10,7 @@
 .chip {
 	vertical-align: middle;
 }
+
+.collection .collection-item.avatar {
+	min-height: calc(42px + 10px); /* avatar + padding */
+}
