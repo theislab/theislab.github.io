@@ -7,7 +7,8 @@ const usage_repos = {
 }
 const categories = {
 	scanpy: ['scanpy', 'anndata', 'scanpydoc'],
-	'Bart-Seq': ['bartSeq', 'bartseq-pipeline'],
+	// Currently, “bartseq-pipeline” lives in “Analysis pipelines”. Good idea?
+	//'Bart-Seq': ['bartSeq', 'bartseq-pipeline'],
 	'Deep learning': ['dca', 'deepflow', 'scGen'],
 	MetaMap: ['MetaMap', 'MetaMap-web'],
 	'Statistical models': ['diffxpy', 'batchglm', 'LineagePulse', 'kBET', 'enrichment_analysis_celltype'],
@@ -15,6 +16,7 @@ const categories = {
 	// uncomment once “graphdynamics” is public
 	//'population dyamics': ['pseudodynamics', 'graphdynamics']
 	'Analyses': ['2018_Angelidis', 'LungAgingAtlas'],
+	'Analysis pipelines': ['single-cell-tutorial', 'scAnalysisTutorial', 'bartseq-pipeline']
 }
 
 const invert = obj =>
