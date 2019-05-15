@@ -74,7 +74,7 @@ const render_repo = ({
 	homepage,
 	stargazers_count: stars,
 	has_issues, open_issues,
-	usage_repo,
+	usage_repos,
 }) => {
 	// Some repos are just links to others
 	if (homepage && homepage.startsWith('https://github.com')) {
@@ -87,7 +87,7 @@ const render_repo = ({
 			<span class=title>${icon_link(name, homepage)}</span>
 			${description ? `<p>${urlify(description)}</p>` : ''}
 			<div class=secondary-content>
-				${usage_repo ? `<a href="${usage_repo.html_url}" class=chip>${usage_repo.name}</a>` : ''}
+				${usage_repos.length ? usage_repos.map(r => `<a href="${r.html_url}" class=chip>${r.name}</a>`).join('\n') : ''}
 				${stars < 20 ? '' : `<a href="${html_url}/stargazers" class=chip><img src=images/star.svg>${stars}</a>`}
 				<!--
 				${!has_issues ? '' : `<a href="${html_url}/issues" class=chip><img src=images/issue.svg>${open_issues}</a>`}
@@ -129,7 +129,7 @@ const render_project_list = () =>
 			.reverse()
 			.map(repo => ({
 				...repo,
-				usage_repo: repos.find(({name}) => (usage_repos[repo.name] || []).includes(name)),
+				usage_repos: repos.filter(({name}) => (usage_repos[repo.name] || []).includes(name)),
 			}))
 		return render_repos(sorted)
 	})
