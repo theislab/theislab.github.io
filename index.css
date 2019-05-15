@@ -14,3 +14,8 @@
 .collection .collection-item.avatar {
 	min-height: calc(42px + 20px); /* avatar + 2*padding */
 }
+
+.avatar > a:link > img:only-child,
+a.chip > img {
+	background-color: #039be5;
+}
