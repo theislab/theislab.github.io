@@ -8,6 +8,7 @@ const categories = {
 	scanpy: ['scanpy', 'anndata'],
 	'Bart-Seq': ['bartSeq', 'bartseq-pipeline'],
 	'Deep learning': ['dca', 'deepflow'],
+	'MetaMap': ['MetaMap', 'MetaMap-web'],
 }
 
 const invert = obj =>
@@ -44,11 +45,14 @@ const icon_link = (html, url) => {
 
 const render_repos = all_repos => {
 	const cat_names = Object.keys(categories)
-	const groups = cat_names
-		.map(cat => ({cat, repos: all_repos.filter(({name}) => repo2cat[name] === cat)}))
-		.sort(sorter(({repos}) => repos.reduce((sum, {stargazers_count: stars}) => sum + stars, 0)))
+	const groups_unsorted = [
+		...cat_names.map(cat => ({cat, repos: all_repos.filter(({name}) => repo2cat[name] === cat)})),
+		{cat: 'Other', repos: all_repos.filter(({name}) => !cat_names.includes(repo2cat[name]))}
+	]
+	// Sort by sum(stars) / #repos
+	const groups = groups_unsorted
+		.sort(sorter(({repos}) => repos.reduce((sum, {stargazers_count: stars}) => sum + stars, 0) / repos.length))
 		.reverse()
-	groups.push({cat: 'Other', repos: all_repos.filter(({name}) => !cat_names.includes(repo2cat[name]))})
 	return groups.map(({cat, repos}) => `
 		<h2>${cat}</h2>
 		<ul class=collection>
