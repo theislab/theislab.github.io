@@ -13,9 +13,8 @@ const categories = {
 	MetaMap: ['MetaMap', 'MetaMap-web'],
 	'Statistical models': ['diffxpy', 'batchglm', 'LineagePulse', 'kBET', 'enrichment_analysis_celltype'],
 	'Manifold learning': ['paga', 'destiny', 'kbranches'],
-	// uncomment once “graphdynamics” is public
-	//'population dyamics': ['pseudodynamics', 'graphdynamics']
-	'Analyses': ['2018_Angelidis', 'LungAgingAtlas'],
+	'Dynamical models': ['pseudodynamics', 'scvelo', /*'graphdynamics'*/],
+	Analyses: ['2018_Angelidis', 'LungAgingAtlas'],
 	'Analysis pipelines': ['single-cell-tutorial', 'scAnalysisTutorial', 'bartseq-pipeline']
 }
 
@@ -92,7 +91,7 @@ const render_repo = ({
 			${description ? `<p>${urlify(description)}</p>` : ''}
 			<div class=secondary-content>
 				${!usage_repos.length ? '' : usage_repos.map(r => chip_link(r.name, r.html_url, 'github')).join('\n')}
-				${stars < 20 ? '' : chip_link(stars, `${html_url}/stargazers`, 'star')}
+				${!stars ? '' : chip_link(stars, `${html_url}/stargazers`, 'star')}
 				<!--
 				${!has_issues ? '' : chip_link(open_issues, `${html_url}/issues`, 'issue')}
 				-->
@@ -129,6 +128,7 @@ const render_project_list = () =>
 		const sorted = repos
 			.filter(({archived}) => !archived)
 			.filter(({name}) => !Object.values(usage_repos).flat().includes(name))
+			.filter(({name}) => name !== 'theislab.github.io')
 			.sort(sorter('stargazers_count', 'name'))
 			.reverse()
 			.map(repo => ({
