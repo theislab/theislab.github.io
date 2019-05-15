@@ -1,18 +1,20 @@
 const usage_repos = {
-	scanpy: 'scanpy_usage',
-	anndata: 'anndata_usage',
-	scvelo: 'scvelo_notebooks',
-	diffxpy: 'diffxpy_tutorials',
+	scanpy: ['scanpy_usage', 'scanpy-tutorials'],
+	anndata: ['anndata_usage'],
+	scvelo: ['scvelo_notebooks'],
+	diffxpy: ['diffxpy_tutorials'],
+	scGen: ['scGen_reproducibility'],
 }
 const categories = {
-	scanpy: ['scanpy', 'anndata', ''],
+	scanpy: ['scanpy', 'anndata', 'scanpydoc'],
 	'Bart-Seq': ['bartSeq', 'bartseq-pipeline'],
-	'Deep learning': ['dca', 'deepflow'],
+	'Deep learning': ['dca', 'deepflow', 'scGen'],
 	MetaMap: ['MetaMap', 'MetaMap-web'],
 	'Statistical models': ['diffxpy', 'batchglm', 'LineagePulse', 'kBET', 'enrichment_analysis_celltype'],
 	'Manifold learning': ['paga', 'destiny', 'kbranches'],
 	// uncomment once “graphdynamics” is public
 	//'population dyamics': ['pseudodynamics', 'graphdynamics']
+	'Analyses': ['2018_Angelidis', 'LungAgingAtlas'],
 }
 
 const invert = obj =>
@@ -102,18 +104,32 @@ const render_error = e => `
 	</div>
 `
 
+const parse_link_hdr = hdr => hdr.split(/,\s+/)
+	.map(s => /<([^>]+)>; rel="(\w+)"/.exec(s))
+	.reduce((o, [, l, r]) => {o[r] = l; return o}, {})
+
+
+const fetch_all = url => fetch(url).then(r => {
+	const links = parse_link_hdr(r.headers.get('Link'))
+	if (links.next)
+		return Promise.all([r.json(), fetch_all(links.next)])
+			.then(([a, b]) => a.concat(b))
+	else
+		return r.json()
+})
+
 const repos_url = 'https://api.github.com/orgs/theislab/repos'
-const render_project_list = () => fetch(repos_url)
-	.then(r => r.json())
+const render_project_list = () =>
+	fetch_all(repos_url)
 	.then(repos => {
 		const sorted = repos
 			.filter(({archived}) => !archived)
-			.filter(({name}) => !Object.values(usage_repos).includes(name))
+			.filter(({name}) => !Object.values(usage_repos).flat().includes(name))
 			.sort(sorter('stargazers_count', 'name'))
 			.reverse()
 			.map(repo => ({
 				...repo,
-				usage_repo: repos.find(({name}) => name === usage_repos[repo.name]),
+				usage_repo: repos.find(({name}) => (usage_repos[repo.name] || []).includes(name)),
 			}))
 		return render_repos(sorted)
 	})
