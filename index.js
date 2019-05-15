@@ -67,6 +67,8 @@ const render_repos = all_repos => {
 	`).join('\n')
 }
 
+const chip_link = (html, url, img) => `<a href="${url}" class=chip><img src=images/${img}.svg>${html}</a>`
+
 const render_repo = ({
 	name,
 	description,
@@ -87,10 +89,10 @@ const render_repo = ({
 			<span class=title>${icon_link(name, homepage)}</span>
 			${description ? `<p>${urlify(description)}</p>` : ''}
 			<div class=secondary-content>
-				${usage_repos.length ? usage_repos.map(r => `<a href="${r.html_url}" class=chip>${r.name}</a>`).join('\n') : ''}
-				${stars < 20 ? '' : `<a href="${html_url}/stargazers" class=chip><img src=images/star.svg>${stars}</a>`}
+				${!usage_repos.length ? '' : usage_repos.map(r => chip_link(r.name, r.html_url, 'github')).join('\n')}
+				${stars < 20 ? '' : chip_link(stars, `${html_url}/stargazers`, 'star')}
 				<!--
-				${!has_issues ? '' : `<a href="${html_url}/issues" class=chip><img src=images/issue.svg>${open_issues}</a>`}
+				${!has_issues ? '' : chip_link(open_issues, `${html_url}/issues`, 'issue')}
 				-->
 			</div>
 		</li>
@@ -106,7 +108,7 @@ const render_error = e => `
 
 const parse_link_hdr = hdr => hdr.split(/,\s+/)
 	.map(s => /<([^>]+)>; rel="(\w+)"/.exec(s))
-	.reduce((o, [, l, r]) => {o[r] = l; return o}, {})
+	.reduce((o, [, l, r]) => (o[r] = l, o), {})
 
 
 const fetch_all = url => fetch(url).then(r => {
