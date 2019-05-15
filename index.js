@@ -5,10 +5,14 @@ const usage_repos = {
 	diffxpy: 'diffxpy_tutorials',
 }
 const categories = {
-	scanpy: ['scanpy', 'anndata'],
+	scanpy: ['scanpy', 'anndata', ''],
 	'Bart-Seq': ['bartSeq', 'bartseq-pipeline'],
 	'Deep learning': ['dca', 'deepflow'],
-	'MetaMap': ['MetaMap', 'MetaMap-web'],
+	MetaMap: ['MetaMap', 'MetaMap-web'],
+	'Statistical models': ['diffxpy', 'batchglm', 'LineagePulse', 'kBET', 'enrichment_analysis_celltype'],
+	'Manifold learning': ['paga', 'destiny', 'kbranches'],
+	// uncomment once “graphdynamics” is public
+	//'population dyamics': ['pseudodynamics', 'graphdynamics']
 }
 
 const invert = obj =>
@@ -69,20 +73,27 @@ const render_repo = ({
 	stargazers_count: stars,
 	has_issues, open_issues,
 	usage_repo,
-}) => `
-	<li class="collection-item avatar">
-		<a href="${html_url}"><img src=images/github.svg class=circle></a>
-		<span class=title>${icon_link(name, homepage)}</span>
-		${description ? `<p>${urlify(description)}</p>` : ''}
-		<div class=secondary-content>
-			${usage_repo ? `<a href="${usage_repo.html_url}" class=chip>${usage_repo.name}</a>` : ''}
-			${stars < 20 ? '' : `<a href="${html_url}/stargazers" class=chip><img src=images/star.svg>${stars}</a>`}
-			<!--
-			${!has_issues ? '' : `<a href="${html_url}/issues" class=chip><img src=images/issue.svg>${open_issues}</a>`}
-			-->
-		</div>
-	</li>
-`
+}) => {
+	// Some repos are just links to others
+	if (homepage && homepage.startsWith('https://github.com')) {
+		html_url = homepage
+		homepage = null
+	}
+	return `
+		<li class="collection-item avatar">
+			<a href="${html_url}"><img src=images/github.svg class=circle></a>
+			<span class=title>${icon_link(name, homepage)}</span>
+			${description ? `<p>${urlify(description)}</p>` : ''}
+			<div class=secondary-content>
+				${usage_repo ? `<a href="${usage_repo.html_url}" class=chip>${usage_repo.name}</a>` : ''}
+				${stars < 20 ? '' : `<a href="${html_url}/stargazers" class=chip><img src=images/star.svg>${stars}</a>`}
+				<!--
+				${!has_issues ? '' : `<a href="${html_url}/issues" class=chip><img src=images/issue.svg>${open_issues}</a>`}
+				-->
+			</div>
+		</li>
+	`
+}
 
 const render_error = e => `
 	<div class=error>
