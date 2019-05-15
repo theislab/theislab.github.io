@@ -12,5 +12,5 @@
 }
 
 .collection .collection-item.avatar {
-	min-height: calc(42px + 10px); /* avatar + padding */
+	min-height: calc(42px + 20px); /* avatar + 2*padding */
 }

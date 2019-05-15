@@ -1,10 +1,13 @@
-const icons = {
-	'images/pypi.svg': ['pypi.org'],
-	'images/icb.png': ['helmholtz-muenchen.de', 'scidom.de'],
+const usage_repos = {
+	scanpy: 'scanpy_usage',
+	anndata: 'anndata_usage',
+	scvelo: 'scvelo_notebooks',
+	diffxpy: 'diffxpy_tutorials',
 }
 const categories = {
-	scanpy: ['scanpy', 'scanpy_usage', 'anndata', 'anndata_usage'],
-	scvelo: ['scvelo', 'scvelo_notebooks'],
+	scanpy: ['scanpy', 'anndata'],
+	'Bart-Seq': ['bartSeq', 'bartseq-pipeline'],
+	'Deep learning': ['dca', 'deepflow'],
 }
 
 const invert = obj =>
@@ -14,10 +17,7 @@ const invert = obj =>
 		return o
 	}, {})
 
-const domain2icon = invert(icons)
 const repo2cat = invert(categories)
-
-const get_domain = url => url.match(/^https?:\/\/(?:[^.]+\.)?([^.]+\.[^\/:]+)(?::\d+)?(?:\/.*)?$/)[1]
 
 const sorter = (...keys) => (a, b) => {
 	for (const key of keys) {
@@ -39,15 +39,7 @@ const urlify = text =>
 const maybe_link = (html, url) => url ? `<a href="${url}">${html}</a>` : html
 const icon_link = (html, url) => {
 	if (!url) return html
-	const domain = get_domain(url)
-	const icon = domain2icon[domain]
-	if (!icon) console.warn(`${html}: no icon found for domain ${domain}`)
-	return `
-		<a href="${url}">
-			${html}
-			${icon ? `<img src=${icon} class=chip>` : ''}
-		</a>
-	`
+	return `<a href="${url}">${html}</a>`
 }
 
 const render_repos = all_repos => {
@@ -72,15 +64,19 @@ const render_repo = ({
 	homepage,
 	stargazers_count: stars,
 	has_issues, open_issues,
+	usage_repo,
 }) => `
 	<li class="collection-item avatar">
 		<a href="${html_url}"><img src=images/github.svg class=circle></a>
 		<span class=title>${icon_link(name, homepage)}</span>
 		${description ? `<p>${urlify(description)}</p>` : ''}
-		${stars < 20 ? '' : `<a href="${html_url}/stargazers" class="secondary-content chip"><img src=images/star.svg>${stars}</a>`}
-		<!--
-		${!has_issues ? '' : `<a href="${html_url}/issues" class="secondary-content chip"><img src=images/issue.svg>${open_issues}</a>`}
-		-->
+		<div class=secondary-content>
+			${usage_repo ? `<a href="${usage_repo.html_url}" class=chip>${usage_repo.name}</a>` : ''}
+			${stars < 20 ? '' : `<a href="${html_url}/stargazers" class=chip><img src=images/star.svg>${stars}</a>`}
+			<!--
+			${!has_issues ? '' : `<a href="${html_url}/issues" class=chip><img src=images/issue.svg>${open_issues}</a>`}
+			-->
+		</div>
 	</li>
 `
 
@@ -97,8 +93,13 @@ const render_project_list = () => fetch(repos_url)
 	.then(repos => {
 		const sorted = repos
 			.filter(({archived}) => !archived)
+			.filter(({name}) => !Object.values(usage_repos).includes(name))
 			.sort(sorter('stargazers_count', 'name'))
 			.reverse()
+			.map(repo => ({
+				...repo,
+				usage_repo: repos.find(({name}) => name === usage_repos[repo.name]),
+			}))
 		return render_repos(sorted)
 	})
 
