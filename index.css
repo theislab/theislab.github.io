@@ -11,8 +11,40 @@
 	vertical-align: middle;
 }
 
+.collection .collection-item.avatar,
+.collection .collection-item.avatar > *,
+.collection .collection-item.avatar > * > .chip {
+	display: flex;
+	flex-direction: row;
+}
 .collection .collection-item.avatar {
 	min-height: calc(42px + 20px); /* avatar + 2*padding */
+	flex-wrap: wrap;
+	padding-left: 20px;
+}
+.collection .collection-item.avatar :not(.circle-clipper) > .circle {
+	position: static;
+}
+.collection .collection-item.avatar > * {
+	flex-grow: 0;
+}
+.collection .collection-item.avatar > :first-child {
+	flex-basis: 200px;
+	flex-grow: 1;
+}
+.collection .collection-item.avatar > div > *:nth-child(2) {
+	padding: 0 10px;
+}
+
+.collection .collection-item.avatar .secondary-content {
+	position: static;
+	float: none;
+	align-items: center;
+}
+
+.collection .collection-item.avatar .secondary-content .chip {
+	white-space: nowrap;
+	margin-bottom: 0;
 }
 
 .avatar > a:link > img:only-child,

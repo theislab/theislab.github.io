@@ -86,9 +86,13 @@ const render_repo = ({
 	}
 	return `
 		<li class="collection-item avatar">
-			<a href="${html_url}"><img src=images/github.svg class=circle></a>
-			<span class=title>${icon_link(name, homepage)}</span>
-			${description ? `<p>${urlify(description)}</p>` : ''}
+			<div>
+				<a href="${html_url}"><img src=images/github.svg class=circle></a>
+				<div>
+					<span class=title>${icon_link(name, homepage)}</span>
+					${description ? `<p>${urlify(description)}</p>` : ''}
+				</div>
+			</div>
 			<div class=secondary-content>
 				${!usage_repos.length ? '' : usage_repos.map(r => chip_link(r.name, r.html_url, 'github')).join('\n')}
 				${!stars ? '' : chip_link(stars, `${html_url}/stargazers`, 'star')}
