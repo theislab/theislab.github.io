@@ -6,7 +6,7 @@ const usage_repos = {
 	scGen: ['scGen_reproducibility'],
 }
 const categories = {
-	scanpy: ['scanpy', 'anndata', 'scanpydoc'],
+	scanpy: ['scanpy', 'anndata', 'anndata2ri', 'scanpydoc'],
 	// Currently, “bartseq-pipeline” lives in “Analysis pipelines”. Good idea?
 	//'Bart-Seq': ['bartSeq', 'bartseq-pipeline'],
 	'Deep learning': ['dca', 'deepflow', 'scGen'],
