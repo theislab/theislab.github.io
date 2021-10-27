@@ -125,16 +125,16 @@ footer:
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      # url: "mailto:icb.office@helmholtz-muenchen.de"
+      url: "mailto:icb.office@helmholtz-muenchen.de"
     - label: "Website"
       icon: "fas fa-fw fa-link"
-      # url: "https://www.helmholtz-muenchen.de/icb/"
+      url: "https://www.helmholtz-muenchen.de/icb/"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
-      # url: "https://twitter.com/ICBmunich"
+      url: "https://twitter.com/ICBmunich"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      # url: "https://github.com/theislab"
+      url: "https://github.com/theislab"
     
 # Reading Files
 include:

@@ -2,8 +2,26 @@
 layout: single
 title:  "Blog 2"
 date:   2021-10-25 14:28:06 +0200
-categories: test
-author: Leon Hetzel
+categories: test2
+# author: Leon Hetzel
+author:
+  name: Theislab
+  bio: ICB
+  location: Munich, Germany
+  avatar: "/assets/images/icb.png"
+  links:
+  - label: "Email"
+    icon: "fas fa-fw fa-envelope-square"
+    url: "mailto:icb.office@helmholtz-muenchen.de"
+  - label: "Website"
+    icon: "fas fa-fw fa-link"
+    url: "https://www.helmholtz-muenchen.de/icb/"
+  - label: "Twitter"
+    icon: "fab fa-fw fa-twitter-square"
+    url: "https://twitter.com/ICBmunich"
+  - label: "GitHub"
+    icon: "fab fa-fw fa-github"
+    url: "https://github.com/theislab"
 ---
 ---
 __Advertisement :)__

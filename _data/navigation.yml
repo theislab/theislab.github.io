@@ -4,5 +4,7 @@ main:
     url: /
   - title: "Blog"
     url: /blog/
+  - title: "Categories"
+    url: /categories/
   - title: "GitHub Projects"
     url: /projects/

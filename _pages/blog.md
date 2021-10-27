@@ -1,7 +1,7 @@
 ---
 title: "Blog"
 excerpt: "Blog of the Theislab"
-sitemap: true
+sitemap: false
 permalink: /blog.html
 ---
 
