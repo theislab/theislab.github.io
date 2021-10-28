@@ -61,7 +61,7 @@ atom_feed:
   hide                   : # true, false (default)
 search                   : true  # , false (default)
 search_full_content      : true  # , false (default)
-search_provider          : # algolia  # lunr (default), algolia, google
+search_provider          : # aglgolia # algolia  # lunr (default), algolia, google
 algolia:
   application_id         : # YOUR_APPLICATION_ID
   index_name             : # YOUR_INDEX_NAME
@@ -287,6 +287,7 @@ defaults:
     values:
       layout: single
       share: true
+      author_profile: true
 
 defaults:
   # _foo
@@ -307,11 +308,29 @@ defaults:
 
 
 collections:
-  staff_members:
+  authors:
     people: true
+    output: true
 portfolio:
   output: true
   permalink: /:collection/:path/
+
+defaults:
+  - scope:
+      path: ""
+      type: "authors"
+    values:
+      layout: "author"
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+
 
 defaults:
   # _portfolio

@@ -1,6 +1,10 @@
 ---
 layout: single
 title:  "Blog 3"
+author_profile: true
+toc: true
+toc_label: "Table of Contents"
+toc_icon: "cog"
 date:   2021-10-25 14:28:06 +0200
 categories: test
 author: Philipp Weiler
