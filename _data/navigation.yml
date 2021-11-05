@@ -1,12 +1,8 @@
 # main links
 main:
-  - title: "Home"
-    url: /
   - title: "Blog"
-    url: /blog/
+    url: /
   - title: "Categories"
     url: /categories/
   - title: "GitHub Projects"
     url: /projects/
-  - title: "Staff"
-    url: /staff/
