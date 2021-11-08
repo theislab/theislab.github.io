@@ -17,6 +17,7 @@ An h1 header
 ============
 
 ![Kiku](https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2745&q=80 "Street Art")
+![Test](/assets/images/hackathon_group.png "Group")
 
 Paragraphs are separated by a blank line.
 
