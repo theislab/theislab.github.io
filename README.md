@@ -1,6 +1,6 @@
 # Theislab Blog
 
-This is the repository to the [Theislab Blog](theislab.github.io "Blog"). The Theislab Blog stores blog posts of current research, best practices and other content of our lab to share with the broader public. 
+This is the repository to the [Theislab Blog](https://theislab.github.io/ "Blog"). The Theislab Blog stores blog posts of current research, best practices and other content of our lab to share with the broader public. 
 
 ## Documentation
 
