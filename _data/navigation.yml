@@ -1,0 +1,8 @@
+# main links
+main:
+  - title: "Blog"
+    url: /
+  - title: "Categories"
+    url: /categories/
+  - title: "GitHub Projects"
+    url: /projects/

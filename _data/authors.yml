@@ -1,0 +1,68 @@
+Theislab:
+    name: Theislab
+    bio: ICB
+    avatar: "/assets/images/authors/icb.png"
+    links:
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto:icb.office@helmholtz-muenchen.de"
+    - label: "Website"
+      icon: "fas fa-fw fa-link"
+      url: "https://www.helmholtz-muenchen.de/icb/"
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      url: "https://twitter.com/ICBmunich"
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/theislab"
+
+Till Richter:
+    name: Till Richter
+    bio: PhD Student
+    avatar: "/assets/images/authors/fox.png"
+    location: Munich, Germany
+    links:
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto:till.richter@helmholtz-muenchen.de"
+    - label: "Website"
+      icon: "fas fa-fw fa-link"
+      url: "richtertill.github.io"
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      url: "https://twitter.com/TillRichter6"
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/richtertill"
+
+Leon Hetzel:
+    name: Leon Hetzel
+    bio: PhD Student
+    avatar: "/assets/images/authors/robot.png"
+    location: Munich, Germany
+    links:
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto:leon.hetzel@helmholtz-muenchen.de"
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      url: "https://twitter.com/leon_het"
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/MxMstrmn"
+
+Philipp Weiler:
+    name: Philipp Weiler
+    bio: PhD Student
+    avatar: "/assets/images/authors/fox.png"
+    location: Munich, Germany
+    links:
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto:philipp.weiler@helmholtz-muenchen.de"
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      url: "https://twitter.com/PhilippWeiler7"
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/WeilerP"
