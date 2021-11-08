@@ -80,7 +80,7 @@ Here's a footnote [^1].
 Figures
 -------------
 
-![example image](/assets/images/fox.png "An exemplary image")
+![example image](/assets/images/blog-posts/example-blog-post/fox.png "An exemplary image")
 
 Equations
 -------------
