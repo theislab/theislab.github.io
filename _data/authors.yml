@@ -1,7 +1,7 @@
 Theislab:
     name: Theislab
     bio: ICB
-    avatar: "/assets/images/icb.png"
+    avatar: "/assets/images/authors/icb.png"
     links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
@@ -19,7 +19,7 @@ Theislab:
 Till Richter:
     name: Till Richter
     bio: PhD Student
-    avatar: "/assets/images/fox.png"
+    avatar: "/assets/images/authors/fox.png"
     location: Munich, Germany
     links:
     - label: "Email"
@@ -38,7 +38,7 @@ Till Richter:
 Leon Hetzel:
     name: Leon Hetzel
     bio: PhD Student
-    avatar: "/assets/images/robot.png"
+    avatar: "/assets/images/authors/robot.png"
     location: Munich, Germany
     links:
     - label: "Email"
@@ -54,7 +54,7 @@ Leon Hetzel:
 Philipp Weiler:
     name: Philipp Weiler
     bio: PhD Student
-    avatar: "/assets/images/user.png"
+    avatar: "/assets/images/authors/fox.png"
     location: Munich, Germany
     links:
     - label: "Email"
