@@ -66,3 +66,41 @@ Philipp Weiler:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/WeilerP"
+
+Lukas Heumos:
+    name: Lukas Heumos
+    bio: PhD Student
+    avatar: "/assets/images/authors/lukas_heumos.jpg"
+    location: Munich, Germany
+    links:
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto:lukas.heumos@helmholtz-munich.de"
+    - label: "Website"
+      icon: "fas fa-fw fa-link"
+      url: "https://lukasheumos.com"
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      url: "https://twitter.com/lukasheumos"
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/zethson"
+
+Lukas Heumos and Philipp Ehmele:
+    name: Lukas Heumos and Philipp Ehmele
+    bio: PhD Student
+    avatar: "/assets/images/authors/lukas_heumos.jpg"
+    location: Munich, Germany
+    links:
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto:lukas.heumos@helmholtz-munich.de"
+    - label: "Website"
+      icon: "fas fa-fw fa-link"
+      url: "https://lukasheumos.com"
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      url: "https://twitter.com/lukasheumos"
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/zethson"
