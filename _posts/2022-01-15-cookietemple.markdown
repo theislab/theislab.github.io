@@ -5,7 +5,7 @@ author_profile: true
 toc: true
 toc_label: "Table of Contents"
 toc_icon: "cog"
-date:   2022-01-15 15:00:00 +0200
+date:   2022-05-01 10:00:00 +0200
 categories: programming
 author: Lukas Heumos and Philipp Ehmele
 ---
@@ -25,7 +25,9 @@ Here we introduce **cookietemple**, a Python based command-line tool providing b
 
 Initially, we tried distributing project templates among peers based on our existing projects, but quickly noticed several issues. First, these templates were not necessarily customizable and second, these templates were quickly out of date and there was no easy way to update all existing projects to the new standards.
 
-![cookietemple overview](/assets/images/blog-posts/cookietemple/CT_OV.png "Overview of cookietemple.")
+| ![cookietemple overview](/assets/images/blog-posts/cookietemple/CT_OV.png) | 
+|:--:| 
+| *Overview of cookietemple* |
 
 As a matter of necessity to ensure that our very own research software tools are of highest quality and can be developed in academic and industry collaborations we founded the cookiejar organization in 2020. The first major project of the cookiejar organization is cookietemple. cookietemple is a Python based command line tool providing best-practice project templates for various domains and languages with additional helper tools. As of November 2021 cookietemple has been implemented as a proof of concept with best-practice templates for Python packages, C++ libraries, Java based command line tools and graphical user interfaces. With more than 100 Github stars and 28000 downloads cookietemple enjoys some popularity and is well received in the community. Further, cookietemple was able to attract several developers beyond the two initiators of the project which contribute to the project regularly through bug reports and code contributions. We want to highlight that for example the support for the Microsoft Windows operating system was solely contributed by external contributors. Extensive documentation is available on [Read The Docs](https://cookietemple.readthedocs.io/en/latest/). Currently, the community around cookietemple is organized through a [Discord server](https://discord.com/invite/PYF8NUk) as well as Github issues. A [website](https://cookietemple.com) showcasing cookietemple and the templates represent the public profile.
 In the following subsections we will introduce the core ideas of cookietemple in more detail and outline how cookietemple will be developed further.
@@ -34,13 +36,17 @@ In the following subsections we will introduce the core ideas of cookietemple in
 
 cookietemple is supposed to decrease the complexity and on boarding time of moderately experienced developers such as academics to highly modern best-practice projects. Therefore, many processes such as the increasing of a version across several files or the writing of release notes are automated. Further, to facilitate contributions to different projects from even different domains or programming languages, the cookietemple based projects feature common designs. This is especially important in an academic settings where collaborations and specific contributions to a high number of different projects are imperative and encouraged. As a result we also put an emphasis on ensuring that contributions to cookietemple based projects are correctly credited. Finally, developing is supposed to feel modern and be fun while teaching less experienced users throughout the process. Developers are not supposed to fight against, but to actually embrace the tooling.
 
-![cookietemple workflow](/assets/images/blog-posts/cookietemple/CT_WF.png "(a) Project development without cookietemple. Developers work independently on a project with their own standards and workflows, which may not be compatible with the other developers. (b) Project development using cookietemple. Creating a cookietemple project and work with it, linting, sync and other template features like GitHub Actions will ensure adherence to common standards which simplifies collaboration between the institutions.")
+| ![cookietemple workflow](/assets/images/blog-posts/cookietemple/CT_WF.png) | 
+|:--:| 
+| *(a) Project development without cookietemple. Developers work independently on a project with their own standards and workflows, which may not be compatible with the other developers. (b) Project development using cookietemple. Creating a cookietemple project and work with it, linting, sync and other template features like GitHub Actions will ensure adherence to common standards which simplifies collaboration between the institutions.* |
 
 ## Creating projects with cookietemple
 
 cookietemple guides users interactively through the creation of a new project. Internally, cookietemple populates the template with user selected values using [cookiecutter](https://cookiecutter.readthedocs.io/en/latest/) and copies the by all templates shared files into the template to finally create a user defined project. The created project is then automatically pushed to a newly created Github repository. This facilitates and encourages code sharing for research software from the very beginning.
 
-![creating projects with cookietemple](/assets/images/blog-posts/cookietemple/create.gif "Creating projects interactively with cookietemple.")
+| ![Creating projects with cookietemple](/assets/images/blog-posts/cookietemple/create.gif) | 
+|:--:| 
+| *Creating projects interactively with cookietemple* |
 
 ## Templates
 
@@ -54,7 +60,9 @@ The best-practice templates are at the core of cookietemple. The currently avail
 
 One of the key ideas behind all of cookietemple's templates is that they share a common design and feature set. All templates feature a Makefile unifying and abstracting common tasks like the installation (*make install*) of the tool or library, or the building of the documentation (*make docs*). Therefore, for simple tasks, deep knowledge of the build tools is not required. The common files for all templates also feature a consolidated Sphinx documentation setup. Hence, developers of cookietemple based projects can easily update the documentation of projects ensuring that it is always up to date. Modern developing entails continuous integration and testing which the templates provide in the form of pre-configured Github Actions. Although some of the template specific Github Actions workflows differ due to the language specific setup, all of them are based on the same service. Hence, learning a new CI service when contributing to other projects is not necessary. Here, we want to highlight one particular Github Action which all templates share. In academic settings it is especially important to highlight contributions. cookietemple facilitates this through the integration of pre-configured [release-drafter](https://github.com/release-drafter/release-drafter)). Whenever pull requests are made against the (development) branch, the type of contribution (feature, bug fix, etc.) is automatically detected from the branch name and the pull request gets the corresponding label. Later, when the pull request is merged, the draft release notes get automatically updated with a link to the pull request and the Github username of the contributor in the corresponding section (e.g. bugs for a bug fix).
 
-![release drafter example](/assets/images/blog-posts/cookietemple/RD.png "Example release drafter release notes.")
+| ![Release drafter example](/assets/images/blog-posts/cookietemple/RD.png) | 
+|:--:| 
+| *Example release drafter release notes* |
 
 As a result, if users are familiar with a single cookietemple template they can much more easily contribute to projects of even different domains and languages. Therefore, collaborations between different non-full-time software developers are strengthened because the start up time of often times stressed academics is greatly reduced and contributions are fully credited.
 
@@ -77,19 +85,25 @@ Beyond the creation of templates, the cookietemple command line interface provid
 
 To ensure that no essential files of the project is deleted, the version across all configuration files is consistent and more, cookietemple provides a *cookietemple lint* command which checks an existing project against a set of pre-defined rules. If any of the rules are found to be violated the user is made aware together with a link to allow him to resolve the issue.
 
-![lint example](/assets/images/blog-posts/cookietemple/lint.gif "Example cookietemple lint.")
+| ![lint example](/assets/images/blog-posts/cookietemple/lint.gif) | 
+|:--:| 
+| *Example cookietemple lint* |
 
 ### sync
 
 Users usually create their projects with the latest version of cookietemple wherein all templates itself are also versioned. However, if we, as developers of cookietemple, develop further features for a template or fix a critical bug, we want to update all already existing templates with these additions. This is possible with the tool *cookietemple sync* which is automatically triggered every night with a Github Actions workflow. If *cookietemple sync* detects that the version that the project was created with is lower than the latest corresponding template version of the latest cookietemple release, a pull request is made against the *development* branch. The pull request only contains the changes between the two respective template versions. This is possible with the during the project creation phase created TEMPLATE branch which is used for the git diff. All in all, *cookietemple sync* ensures that all existing projects benefit from continuous development of cookietemple and that all projects always use the same basis, a central promise of cookietemple.
 
-![sync example](/assets/images/blog-posts/cookietemple/sync.gif "Example cookietemple sync.")
+| ![sync example](/assets/images/blog-posts/cookietemple/sync.gif) | 
+|:--:| 
+| *Example cookietemple sync* |
 
 ### bump-version
 
 Increasing the version across several configuration files is not only a cumbersome, but also error-prone process. Hence, cookietemple provides an easily configurable *cookietemple bump-version* command which increases the version of all configuration files. When doing so cookietemple assures that the new version adheres to [semantic versioning](https://semver.org/). The per template pre-configured *cookietemple.cfg* configuration file which every template ships with allows for configuration files to be blacklisted (don't increase any version in this file except for specifically marked code lines) or whitelisted (increase all matching versions in this file except specifically marked code lines) for minimal configuration overhead.
 
-![bump-version example](/assets/images/blog-posts/cookietemple/bump_version.gif "Example bump-version.")
+| ![bump-version example](/assets/images/blog-posts/cookietemple/bump_version.gif) | 
+|:--:| 
+| *Example bump-version* |
 
 ## Use-cases
 
