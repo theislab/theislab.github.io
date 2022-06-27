@@ -110,6 +110,8 @@ GEM
       jekyll-paginate (~> 1.1)
       jekyll-sitemap (~> 1.3)
     multipart-post (2.1.1)
+    nokogiri (1.13.4-arm64-darwin)
+      racc (~> 1.4)
     nokogiri (1.13.4-x64-mingw32)
       racc (~> 1.4)
     nokogiri (1.13.4-x86_64-linux)
@@ -149,6 +151,7 @@ GEM
     webrick (1.7.0)
 
 PLATFORMS
+  arm64-darwin-21
   x64-mingw32
   x86_64-linux
 
